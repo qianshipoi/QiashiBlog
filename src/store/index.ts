@@ -5,7 +5,8 @@ export const useStore = defineStore('main', {
   state: () => {
     return {
       isDarkTheme: false,
-      isLargeScreen: true
+      isLargeScreen: true,
+      displayMenu: false
     }
   },
   actions: {

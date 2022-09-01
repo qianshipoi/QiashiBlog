@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@vicons/ionicons5": "latest",
-    "@vicons/utils": "latest",
     "@vueuse/components": "^9.0.2",
     "@vueuse/core": "^9.0.0",
     "animate.css": "^4.1.1",
@@ -28,6 +27,7 @@
   },
   "devDependencies": {
     "@types/qs": "^6.9.7",
+    "@vicons/utils": "latest",
     "@vitejs/plugin-vue": "^2.3.3",
     "autoprefixer": "^10.4.8",
     "concurrently": "^7.2.2",
