@@ -1,6 +1,6 @@
 <template>
-  <nav class="flex justify-between  transition-all duration-500"
-       :class="{'bg-slate-50':displayMenu }"
+  <nav class="flex justify-between  transition-all duration-500 "
+       :class="{'bg-slate-50 shadow-2xl':displayMenu }"
        ref="target">
     <div class="logo mx-6 flex items-center text-4xl">
       LOGO
@@ -75,7 +75,7 @@ document.addEventListener('scroll', (e) => {
 watch(
   () => [scrolltop.value, isOutside.value],
   (newVal) => {
-    if (newVal[0] > 200) {
+    if (newVal[0] > 100) {
       displayMenu.value = true
     } else {
       if (!newVal[1]) {
