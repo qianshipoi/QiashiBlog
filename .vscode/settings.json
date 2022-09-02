@@ -1,0 +1,8 @@
+{
+  "vetur.validation.script": false,
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "scss.lint.unknownAtRules": "ignore",
+  "css.lint.unknownAtRules": "ignore"
+}

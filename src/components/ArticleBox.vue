@@ -1,6 +1,6 @@
 <template>
-  <div class="article-box flex"
-       :class="{ 'flex-row-reverse': reverse }">
+  <article class="article-box flex"
+           :class="{ 'flex-row-reverse': reverse }">
     <div class="flex flex-col"
          :class="{ 'items-end' : reverse}"
          style="width:calc(100% - 430px); padding: 20px 40px">
@@ -39,7 +39,7 @@
            :src="article.cover"
            alt="封面">
     </div>
-  </div>
+  </article>
 </template>
 
 <script setup lang="ts">
