@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="banner h-screen">
-      <img class="h-screen object-cover"
+      <img class="w-screen h-screen object-cover"
            src="https://oss.kuriyama.top/static/nakiri.png"
            alt="头图">
     </div>
