@@ -67,7 +67,7 @@ defineProps<{
 }>()
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .article-box {
   @apply w-full h-80 bg-slate-50 my-4 rounded-2xl overflow-hidden;
   box-shadow: 0 0px 16px #999;
