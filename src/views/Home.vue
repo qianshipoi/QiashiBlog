@@ -39,6 +39,11 @@
         START:DASH!!
       </h4>
 
+      <ArticleBox v-for="(article, index) in articles"
+                  :key="article.id"
+                  :reverse="index % 2 === 1"
+                  :article="article"></ArticleBox>
+
     </div>
   </div>
 </template>
@@ -46,11 +51,22 @@
 <script setup lang="ts">
 import { GiftOutline } from '@vicons/ionicons5'
 import { Icon } from '@vicons/utils'
+import ArticleBox from '../components/ArticleBox.vue'
 
 type Link = {
   id: number
   title: string
   subtitle: string
+  cover: string
+}
+type Article = {
+  id: number
+  title: string
+  content: string
+  publishTime: string
+  hot: number
+  commentCount: number
+  tag: string
   cover: string
 }
 
@@ -74,9 +90,25 @@ const topLinks = ref<Array<Link>>([
     cover: 'https://oss.kuriyama.top/static/nakiri.png'
   }
 ])
+
+const articles = ref<Array<Article>>([])
+
+for (let index = 0; index < 5; index++) {
+  articles.value.push({
+    id: index + 1,
+    title: '基于 SCSS mixin 的 flex gap polyfill',
+    content:
+      '一直以来，习惯在 flex 布局中使用 gap 这个属性设置间距，一直以来也都是在最新的 Chrome 上调试，所以从来没有想在 flex gap 在其他',
+    publishTime: '2021-07-30',
+    hot: 13469,
+    commentCount: 49,
+    tag: '碎碎念',
+    cover: 'https://oss.kuriyama.top/static/nakiri.png'
+  })
+}
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .title {
   @apply flex items-center my-8 font-semibold border-b border-dotted border-gray-300 border-t-0 border-l-0 border-r-0;
 }

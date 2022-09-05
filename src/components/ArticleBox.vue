@@ -1,5 +1,5 @@
 <template>
-  <article class="article-box flex"
+  <article class="article-box group flex"
            :class="{ 'flex-row-reverse': reverse }">
     <div class="flex flex-col"
          :class="{ 'items-end' : reverse}"
@@ -34,7 +34,7 @@
       </icon>
     </div>
     <div style="width:430px"
-         class="group overflow-hidden">
+         class=" overflow-hidden cursor-pointer">
       <img class="w-full h-full object-cover group-hover:scale-125 group-hover:rotate-6 transition-all duration-500 "
            :src="article.cover"
            alt="封面">
@@ -70,7 +70,11 @@ defineProps<{
 <style lang="postcss" scoped>
 .article-box {
   @apply w-full h-80 bg-slate-50 my-4 rounded-2xl overflow-hidden;
-  box-shadow: 0 0px 16px #999;
+  box-shadow: 0 0 8px #999;
+  transition: box-shadow 0.3s ease-in;
+}
+.article-box:hover {
+  box-shadow: 0 0 16px #999;
 }
 .article-content {
   font-size: 15px;
