@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex justify-between  transition-all duration-500 "
+  <nav class="fixed flex justify-between transition-all duration-500 "
        :class="{'bg-slate-50 shadow-2xl':displayMenu }"
        ref="target">
     <div class="logo mx-6 flex items-center text-4xl">
@@ -13,7 +13,7 @@
         <a href="javascript:;"
            class="h-full w-full flex items-center group">{{ menu.name }}</a>
         <ul v-if="menu.children"
-            class="children-menu animate__animated animate__bounceInUp">
+            class="children-menu animate__animated animate__slideInUp">
           <li class="py-1 px-4 hover:text-cyan-300"
               v-for="children in menu.children"
               :key="children.id">
@@ -34,6 +34,18 @@
       </Icon>
     </div>
   </nav>
+  <transition class="animate__animated"
+              name="back"
+              enter-active-class="animate__slideInDown"
+              leave-active-class="animate__slideOutUp">
+    <div class="back-top fixed right-8 z-50 cursor-pointer"
+         v-show="displayBackTop"
+         @click="backTop">
+      <img class="back-top-img"
+           src="https://oss.kuriyama.top/static/apps/kuriyama/scroll.png"
+           alt="回到顶部">
+    </div>
+  </transition>
 </template>
 
 <script setup lang="ts">
@@ -121,6 +133,8 @@ const menus = reactive<Array<Menu>>([
 
 const displayMenu = ref(false)
 
+const displayBackTop = ref(false)
+
 const target = ref(null)
 
 const { isOutside } = useMouseInElement(target)
@@ -136,7 +150,9 @@ watch(
   (newVal) => {
     if (newVal[0] > 100) {
       displayMenu.value = true
+      displayBackTop.value = true
     } else {
+      displayBackTop.value = false
       if (!newVal[1]) {
         displayMenu.value = true
       } else {
@@ -145,6 +161,19 @@ watch(
     }
   }
 )
+
+let timer: any
+
+const backTop = () => {
+  clearInterval(timer)
+  timer = setInterval(function () {
+    if (window.pageYOffset != 0) {
+      window.scroll(0, Math.max(window.pageYOffset - 50, 0))
+    } else {
+      clearInterval(timer)
+    }
+  }, 10)
+}
 </script>
 
 <style lang="postcss" scoped>
@@ -185,6 +214,18 @@ nav {
   to {
     transform: translateX(0);
     opacity: 1;
+  }
+}
+.back-top-img {
+  animation: 2s linear infinite backTop;
+}
+@keyframes backTop {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
   }
 }
 </style>
